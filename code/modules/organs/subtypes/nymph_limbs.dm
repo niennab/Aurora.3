@@ -121,8 +121,8 @@
 	)
 
 /datum/component/nymph_limb/proc/setup_limb(var/obj/item/organ/external/E)
-	if(is_type_in_list(E, nymph_limb_types))
-		E.nymph = new /mob/living/carbon/alien/diona
+//	if(is_type_in_list(E, nymph_limb_types))
+//		E.nymph = new /mob/living/carbon/alien/diona
 
 	E.status |= (ORGAN_PLANT | ORGAN_NYMPH)
 	E.species = all_species["Nymph Limb"]
