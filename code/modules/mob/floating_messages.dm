@@ -11,7 +11,7 @@ var/list/floating_chat_colors = list()
 	floating_chat_colors[name] = color
 
 /atom/movable/proc/animate_chat(message, datum/language/language, small, list/show_to, duration, override_color)
-	set waitfor = FALSE
+/*	set waitfor = FALSE
 
 	var/style	//additional style params for the message
 	var/fontsize = 6
@@ -48,7 +48,7 @@ var/list/floating_chat_colors = list()
 			C.images += understood
 		else
 			C.images += gibberish
-
+*/
 /proc/generate_floating_text(atom/movable/holder, message, style, size, duration, show_to)
 	var/atom/movable/attached_holder = recursive_loc_turf_check(holder, 5)
 	var/image/I = image(null, attached_holder)
