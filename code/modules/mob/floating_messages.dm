@@ -11,6 +11,7 @@ var/list/floating_chat_colors = list()
 	floating_chat_colors[name] = color
 
 /atom/movable/proc/animate_chat(message, datum/language/language, small, list/show_to, duration, override_color)
+	return
 /*	set waitfor = FALSE
 
 	var/style	//additional style params for the message
