@@ -1172,6 +1172,13 @@
 	drop_sound = 'sound/items/drop/cardboardbox.ogg'
 	pickup_sound = 'sound/items/pickup/cardboardbox.ogg'
 
+/obj/item/toy/nss_aurora
+	name = "aurora miniature"
+	desc = "A commemorative miniature of the NSS Aurora, given out to former crew members."
+	desc_fluff = "A miniature of a space station, built into an asteroid. A tiny suspension field keeps it afloat. A small plaque on the front reads: NSS Aurora, Tau Ceti, Romanovich Cloud, 2464. \
+	Onward to new horizons. This miniature was given out on the 9th of April 2464 to all former crew members of the Aurora as a memento, before setting off to their new mission on the SCCV Horizon."
+	icon_state = "nss_aurora"
+
 /obj/item/toy/partypopper/attack_self(mob/user)
 	if(icon_state == "partypopper")
 		spark(src, 1, user.dir)
