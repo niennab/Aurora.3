@@ -5,7 +5,7 @@
 	transforming = 1
 	canmove = 0
 	icon = null
-	invisibility = 101
+	set_invisibility(101)
 	update_canmove()
 	dead_mob_list -= src
 
@@ -39,7 +39,7 @@
 	transforming = TRUE
 	canmove = 0
 	icon = null
-	invisibility = 101
+	set_invisibility(101)
 
 	QDEL_IN(animation, 20)
 	QDEL_IN(src, 20)
@@ -63,7 +63,7 @@
 
 	exit_vr()
 
-	stat = DEAD
+	set_stat(DEAD)
 
 	update_canmove()
 
@@ -72,9 +72,9 @@
 
 	layer = MOB_LAYER
 
-	sight |= SEE_TURFS|SEE_MOBS|SEE_OBJS
-	see_in_dark = 8
-	see_invisible = SEE_INVISIBLE_LEVEL_TWO
+	set_sight(sight|SEE_TURFS|SEE_MOBS|SEE_OBJS)
+	set_see_in_dark(8)
+	set_see_invisible(SEE_INVISIBLE_LEVEL_TWO)
 
 	drop_r_hand()
 	drop_l_hand()

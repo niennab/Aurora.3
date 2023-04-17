@@ -73,9 +73,12 @@
 	. = ..()
 	card_slot.stored_item = new /obj/item/pen/silver
 
-/obj/item/modular_computer/handheld/preset/supply/qm/Initialize()
+/obj/item/modular_computer/handheld/preset/supply/om/Initialize()
 	. = ..()
 	card_slot.stored_item = new /obj/item/pen/fountain
+
+/obj/item/modular_computer/handheld/preset/supply/machinist
+	_app_preset_type = /datum/modular_computer_app_presets/supply/machinist
 
 // Cargo Delivery
 /obj/item/modular_computer/handheld/preset/supply/cargo_delivery
@@ -110,9 +113,6 @@
 /obj/item/modular_computer/handheld/preset/research/Initialize()
 	. = ..()
 	card_slot.stored_item = new /obj/item/pen/white
-
-/obj/item/modular_computer/handheld/preset/research/robotics
-	_app_preset_type = /datum/modular_computer_app_presets/research/robotics
 
 /obj/item/modular_computer/handheld/preset/research/rd
 	_app_preset_type = /datum/modular_computer_app_presets/research/rd

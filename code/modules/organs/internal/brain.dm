@@ -33,7 +33,7 @@
 	else
 		set_max_damage(200)
 	if(!mapload)
-		addtimer(CALLBACK(src, .proc/clear_screen), 5)
+		addtimer(CALLBACK(src, PROC_REF(clear_screen)), 5)
 
 /obj/item/organ/internal/brain/Destroy()
 	if(brainmob)
@@ -177,7 +177,7 @@
 	if(is_broken())
 		if(!owner.lying && prob(5))
 			to_chat(owner, "<span class='danger'>You black out!</span>")
-		owner.Paralyse(10)
+			owner.Paralyse(10)
 
 /obj/item/organ/internal/brain/surgical_fix(mob/user)
 	var/blood_volume = owner.get_blood_oxygenation()

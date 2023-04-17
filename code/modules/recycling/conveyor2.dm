@@ -7,7 +7,7 @@
 	icon_state = "conveyor0"
 	name = "conveyor belt"
 	desc = "A conveyor belt."
-	layer = 2			// so they appear under stuff
+	layer = 2.4			// so they appear above pipes but under doors, objects etc
 	anchored = 1
 	var/operating = 0	// 1 if running forward, -1 if backwards, 0 if off
 	var/operable = 1	// true if can operate (no broken segments in this belt run)
@@ -92,7 +92,7 @@
 		affecting = items
 	conveying = TRUE
 
-	addtimer(CALLBACK(src,.proc/post_process, affecting),1)
+	addtimer(CALLBACK(src, PROC_REF(post_process), affecting),1)
 
 /obj/machinery/conveyor/proc/post_process(var/list/affecting)
 	for(var/af in affecting)

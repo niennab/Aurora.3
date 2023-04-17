@@ -6,11 +6,11 @@
 	icon_screen = "holocontrolw"
 	light_color = LIGHT_COLOR_CYAN
 
-	active_power_usage = 8000 //8kW for the scenery + 500W per holoitem
+	active_power_usage = 2000 //Pretty low, 15 per item too. Will still drain power like crazy on more complex programs
 
 	circuit = /obj/item/circuitboard/holodeckcontrol
 
-	var/item_power_usage = 500
+	var/item_power_usage = 15
 
 	var/area/linkedholodeck = null
 	var/linkedholodeck_area
@@ -159,7 +159,7 @@
 	if (safety_disabled)
 		item_power_usage = 2500
 		for(var/obj/item/holo/esword/H in linkedholodeck)
-			H.damtype = BRUTE
+			H.damtype = DAMAGE_BRUTE
 	else
 		item_power_usage = initial(item_power_usage)
 		for(var/obj/item/holo/esword/H in linkedholodeck)
@@ -294,12 +294,12 @@
 
 	holographic_objs = A.copy_contents_to(linkedholodeck , 1)
 	for(var/obj/holo_obj in holographic_objs)
-		holo_obj.alpha *= 0.8 //give holodeck objs a slight transparency
+		holo_obj.alpha *= 1 //no more transparency, otherwise new presets look like crap -kyres
 
 	if(HP.ambience)
-		linkedholodeck.forced_ambience = HP.ambience
+		linkedholodeck.music = HP.ambience
 	else
-		linkedholodeck.forced_ambience = list()
+		linkedholodeck.music = list()
 
 	for(var/mob/living/M in mobs_in_area(linkedholodeck))
 		if(M.mind)
@@ -379,3 +379,6 @@
 /obj/machinery/computer/HolodeckControl/Horizon
 	density = 0
 	linkedholodeck_area = /area/horizon/holodeck/alphadeck
+
+/obj/machinery/computer/HolodeckControl/Horizon/beta
+	linkedholodeck_area = /area/horizon/holodeck/betadeck

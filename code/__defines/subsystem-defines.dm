@@ -67,7 +67,7 @@
 
 
 // -- SSoverlays --
-#define CUT_OVERLAY_IN(ovr, time) addtimer(CALLBACK(src, /atom/.proc/cut_overlay, ovr), time, TIMER_STOPPABLE | TIMER_CLIENT_TIME)
+#define CUT_OVERLAY_IN(ovr, time) addtimer(CALLBACK(src, TYPE_PROC_REF(/atom, cut_overlay), ovr), time, TIMER_STOPPABLE | TIMER_CLIENT_TIME)
 #define ATOM_USING_SSOVERLAY(atom) (atom.our_overlays || atom.priority_overlays)
 
 // -- SSticker --
@@ -102,6 +102,9 @@
 #define MOB_START_THINKING(mob) if (!mob.thinking_enabled) { SSmob_ai.processing += mob; mob.on_think_enabled(); mob.thinking_enabled = TRUE; }
 #define MOB_STOP_THINKING(mob) SSmob_ai.processing -= mob; mob.on_think_disabled(); mob.thinking_enabled = FALSE;
 
+#define MOB_SHIFT_TO_FAST_THINKING(mob) if(!mob.is_fast_processing) { SSmob_ai.processing -= mob; SSmob_fast_ai.processing += mob; mob.is_fast_processing = TRUE; }
+#define MOB_SHIFT_TO_NORMAL_THINKING(mob) if(mob.is_fast_processing) { SSmob_fast_ai.processing -= mob; SSmob_ai.processing += mob; mob.is_fast_processing = FALSE; }
+
 
 // - SSrecords --
 #define RECORD_GENERAL 1
@@ -115,6 +118,7 @@
 // - SSjobs --
 // departments
 #define DEPARTMENT_COMMAND "Command"
+#define DEPARTMENT_COMMAND_SUPPORT "Command Support"
 #define DEPARTMENT_SECURITY "Security"
 #define DEPARTMENT_ENGINEERING "Engineering"
 #define DEPARTMENT_MEDICAL "Medical"
@@ -126,6 +130,7 @@
 #define DEPARTMENT_MISCELLANEOUS "Miscellaneous"
 #define DEPARTMENTS_LIST_INIT list(\
 	DEPARTMENT_COMMAND = list(),\
+	DEPARTMENT_COMMAND_SUPPORT = list(),\
 	DEPARTMENT_SECURITY = list(),\
 	DEPARTMENT_ENGINEERING = list(),\
 	DEPARTMENT_MEDICAL = list(),\

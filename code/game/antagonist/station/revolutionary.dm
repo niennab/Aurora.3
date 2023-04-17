@@ -16,7 +16,7 @@ var/datum/antagonist/revolutionary/revs
 
 	hard_cap = 3
 	hard_cap_round = 4
-	initial_spawn_req = 3
+	initial_spawn_req = 1
 	initial_spawn_target = 4
 
 	// Inround revs.
@@ -26,7 +26,7 @@ var/datum/antagonist/revolutionary/revs
 	faction_indicator = "contender"
 	faction_invisible = FALSE
 
-	restricted_jobs = list("AI", "Cyborg")
+	restricted_jobs = list("AI", "Cyborg", "Merchant")
 	protected_jobs = list("Lab Assistant", "Medical Intern", "Engineering Apprentice", "Assistant", "Security Cadet", "Captain", "Head of Security")
 	required_age = 31
 
@@ -69,7 +69,7 @@ var/datum/antagonist/revolutionary/revs
 	player.equip_to_slot_or_del(new /obj/item/device/special_uplink/rev(player, player.mind), slot_in_backpack)
 
 	give_codewords(player)
-	INVOKE_ASYNC(src, .proc/alert_revolutionary_status, player)
+	INVOKE_ASYNC(src, PROC_REF(alert_revolutionary_status), player)
 	return TRUE
 
 /datum/antagonist/revolutionary/proc/alert_revolutionary_status(var/mob/living/carbon/human/player) //This is so dumb.
